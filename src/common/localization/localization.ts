@@ -1,3 +1,4 @@
+import { Audience } from 'net.kyori.adventure.audience';
 import { Player } from 'org.bukkit.entity';
 import { sprintf } from 'sprintf-js';
 
@@ -9,15 +10,23 @@ interface Translations {
 const TRANSLATIONS = new Map<string, Translations>();
 
 type FormatArg = string | number;
+
 /**
- * Gets a localized string in player's language.
- * @param player Who is receiving the message
+ * Default locale, used by e.g. console messages and when unknown locales are
+ * encountered.
+ */
+const DEFAULT_LOCALE = 'en_us';
+
+/**
+ * Gets a localized string in audience's language.
+ * @param audience Who is receiving the message
  * @param key Translation key for the message
  * @param formatArgs Arguments to be added to the translated string
  * @returns The translated and formatted string.
  */
-export function t(player: Player, key: string, ...formatArgs: FormatArg[]) {
-  const locale = player.locale.toString();
+export function t(audience: Audience, key: string, ...formatArgs: FormatArg[]) {
+  const locale =
+    audience instanceof Player ? audience.locale.toString() : DEFAULT_LOCALE;
   const msg = translateKey(key, locale);
 
   return sprintf(msg, ...formatArgs);
@@ -29,12 +38,12 @@ export function t(player: Player, key: string, ...formatArgs: FormatArg[]) {
  * player.sendMessage(tr("hello_world"));
  * player.sendMessage(tr("hello_player", player.name));
  *
- * @param player Player who will be receiving the message
+ * @param audience Audience who will be receiving the message
  * @returns Function to call for translation
  */
-export function getTranslator(player: Player) {
+export function getTranslator(audience: Audience) {
   return (key: string, ...formatArgs: FormatArg[]) =>
-    t(player, key, ...formatArgs);
+    t(audience, key, ...formatArgs);
 }
 
 function translateKey(key: string, locale: string) {
@@ -44,7 +53,7 @@ function translateKey(key: string, locale: string) {
     return key;
   }
 
-  return translations[locale] || translations.en_us;
+  return translations[locale] ?? translations[DEFAULT_LOCALE];
 }
 
 /**

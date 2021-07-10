@@ -76,6 +76,11 @@ interface Theme<T> {
      * Error message color.
      */
     error: T;
+
+    /**
+     * Succeess message color.
+     */
+    success: T;
   };
 }
 
@@ -100,6 +105,7 @@ const CHAT_THEMES: Record<string, Theme<string>> = {
     system: {
       status: '#AAAAAA',
       error: '#FF5555',
+      success: '#55FF55',
     },
   },
 };
@@ -138,6 +144,10 @@ export function getChatTheme(player: Player): Theme<TextColor> {
   return COMPILED_THEMES[
     dataHolder(player).get('chat.theme', 'string') ?? 'default'
   ];
+}
+
+export function defaultChatTheme(): Theme<TextColor> {
+  return COMPILED_THEMES.default;
 }
 
 // TODO add theme change support

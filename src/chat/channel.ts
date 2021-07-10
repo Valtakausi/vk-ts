@@ -268,7 +268,7 @@ registerCommand(
       const [action, name] = args;
       const channel = CHANNEL_NAMES[name];
       if (!channel) {
-        errorMessage(player, `Kanavaa ${channel} ei ole olemassa`);
+        errorMessage(sender, `Kanavaa ${channel} ei ole olemassa`);
         return;
       }
 

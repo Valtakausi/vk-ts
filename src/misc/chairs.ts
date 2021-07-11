@@ -27,7 +27,7 @@ const SHOVELS = new Set([
   Material.NETHERITE_SHOVEL,
 ]);
 
-const ChairItem = new CustomItem({
+export const ChairItem = new CustomItem({
   id: 2,
   type: VkItem.MISC,
   name: translate('vk.chair'),

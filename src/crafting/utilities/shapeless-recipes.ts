@@ -22,12 +22,15 @@ export function shapelessRecipe({
     // We want the item to be either Material, RecipeChoice or ItemStack but not "Material | ItemStack | RecipeChoice"
     if (item instanceof Material) {
       recipe.addIngredient(item);
-    } else if (item instanceof ItemStack) {
-      recipe.addIngredient(item);
-    } else {
-      // TODO: RecipeChoice
       return;
-      //recipe.addIngredient(item);
+    }
+    if (item instanceof ItemStack) {
+      recipe.addIngredient(item);
+      return;
+    }
+    if (item instanceof RecipeChoice) {
+      recipe.addIngredient(item);
+      return;
     }
   });
   Bukkit.server.addRecipe(recipe);

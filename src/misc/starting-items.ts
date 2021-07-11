@@ -4,9 +4,8 @@ import { ItemStack } from 'org.bukkit.inventory';
 import { PotionMeta } from 'org.bukkit.inventory.meta';
 import { PotionData, PotionType } from 'org.bukkit.potion';
 import { giveItem } from '../common/helpers/inventory';
-import { CustomItem } from '../common/items/CustomItem';
 import { Mug } from '../hydration/bottles';
-import { HAT_MATERIAL } from './hat';
+import { FlatCap } from './hats';
 
 // TODO: Use better and more interesting items (when implemented)
 // Hat? Custom food? Book?
@@ -19,12 +18,6 @@ const MUG = Mug.create({});
 const mugMeta = MUG.itemMeta as PotionMeta;
 mugMeta.basePotionData = new PotionData(PotionType.WATER);
 MUG.itemMeta = mugMeta;
-
-// Todo: Move somewhere else
-const FlatCap = new CustomItem({
-  type: HAT_MATERIAL,
-  id: 10,
-});
 
 const ITEMS = [
   // First item is going to be placed on the main hand

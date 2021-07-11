@@ -2,7 +2,7 @@ import { Bukkit } from 'org.bukkit';
 
 Bukkit.server.resetRecipes();
 
-require('./recipes/shapeless');
-require('./recipes/furnace');
-require('./recipes/shaped');
-require('./recipes/smithing');
+/**
+ * Load all recipes
+ */
+require('./recipes/index');

@@ -10,7 +10,7 @@ import { giveItem } from '../common/helpers/inventory';
 import { CustomItem } from '../common/items/CustomItem';
 import { EquipmentSlot } from 'org.bukkit.inventory';
 
-const Boomerang = new CustomItem({
+export const Boomerang = new CustomItem({
   id: 2,
   name: translate('vk.boomerang'),
   type: Material.SNOWBALL,

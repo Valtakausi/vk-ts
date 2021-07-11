@@ -17,7 +17,7 @@ import { getPlainText } from '../chat/utils';
 const BALL_DESPAWN_SECONDS = 30;
 const JUMP_KICK_MULTIPLIER = 2;
 
-const Football = new CustomItem({
+export const Football = new CustomItem({
   id: 3,
   name: translate('vk.football'),
   type: Material.SNOWBALL,

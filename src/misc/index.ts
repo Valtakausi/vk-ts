@@ -15,7 +15,7 @@ require('./quiet-open');
 require('./hidden-items');
 require('./winch');
 require('./saw');
-require('./hat');
+require('./hats');
 require('./throwables');
 require('./breeding');
 require('./sauna');

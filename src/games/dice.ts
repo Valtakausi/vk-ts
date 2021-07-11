@@ -41,6 +41,11 @@ const Dice6 = new CustomItem({
   type: VkItem.MISC,
 });
 
+/**
+ * Default dice used in recipes etc
+ */
+export const Dice = Dice6;
+
 const PICKUP_DELAY = 3.5; // Seconds
 const DICES = [Dice1, Dice2, Dice3, Dice4, Dice5, Dice6];
 

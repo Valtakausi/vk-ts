@@ -1,5 +1,5 @@
 import { Bukkit, Material, NamespacedKey } from 'org.bukkit';
-import { ItemStack, ShapedRecipe } from 'org.bukkit.inventory';
+import { ItemStack, RecipeChoice, ShapedRecipe } from 'org.bukkit.inventory';
 import { MaterialChoice } from 'org.bukkit.inventory.RecipeChoice';
 
 interface Ingredient {
@@ -32,10 +32,15 @@ export function shapedRecipe({
     // We want the item to be either Material or ItemStack or RecipeChoice but not "Material | ItemStack | RecipeChoice"
     if (item instanceof Material) {
       shapedRecipe.setIngredient(symbol, item);
-    } else if (item instanceof ItemStack) {
+      return;
+    }
+    if (item instanceof ItemStack) {
       shapedRecipe.setIngredient(symbol, item);
-    } else {
-      // TODO: RecipeChoice
+      return;
+    }
+    if (item instanceof RecipeChoice) {
+      shapedRecipe.setIngredient(symbol, item);
+      return;
     }
   });
 

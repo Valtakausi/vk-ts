@@ -14,7 +14,7 @@ import {
   PaperSealed,
 } from './paper-write';
 
-const SealingWax = new CustomItem({
+export const SealingWax = new CustomItem({
   name: translate('vk.sealing_wax'),
   id: 9,
   type: VkItem.MISC,
